@@ -1,6 +1,6 @@
+use serde_wasm_bindgen;
 use sha2::{Digest, Sha256};
 use wasm_bindgen::prelude::*;
-use serde_wasm_bindgen;
 
 /// Computes a SHA-256 hash from the given input string.
 ///
@@ -74,4 +74,31 @@ pub fn generate_primes(limit: usize) -> Result<JsValue, JsValue> {
 
     serde_wasm_bindgen::to_value(&primes)
         .map_err(|e| JsValue::from_str(&format!("Serialization error: {}", e)))
+}
+
+#[cfg(test)]
+mod tests {
+    #![allow(dead_code)]
+    use super::*;
+    use serde_wasm_bindgen;
+    use wasm_bindgen_test::*;
+
+    wasm_bindgen_test_configure!(run_in_browser);
+
+    #[wasm_bindgen_test]
+    fn test_compute_sha256() {
+        let input = "test";
+        let result = compute_sha256(input).unwrap();
+        let expected = "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08";
+        assert_eq!(result, expected);
+    }
+
+    #[wasm_bindgen_test]
+    fn test_generate_primes() {
+        let limit = 10;
+        let expected = vec![2, 3, 5, 7];
+        let primes_js = generate_primes(limit).unwrap();
+        let primes: Vec<usize> = serde_wasm_bindgen::from_value(primes_js).unwrap();
+        assert_eq!(primes, expected);
+    }
 }

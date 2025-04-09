@@ -66,6 +66,32 @@ Open your web browser and visit:
 http://localhost:5173/
 ```
 
+## Testing
+
+This project uses `wasm-bindgen-test` to run tests in a WebAssembly-compatible environment. The tests verify that the exported functions (`compute_sha256` and `generate_primes`) behave as expected.
+
+### Prerequisites
+
+- **wasm-pack:** Ensure you have `wasm-pack` installed. If not, install it using:
+  ```bash
+  cargo install wasm-pack
+  ```
+- **Browser:** Headless Chrome or Firefox is required to run the tests in a browser environment.
+
+### Running the Tests
+
+Tests can be run using `wasm-pack test`. Here are two common options:
+
+- **Run tests with Chrome (headless):**
+  ```bash
+  wasm-pack test --headless --chrome
+  ```
+
+- **Run tests with Firefox (headless):**
+  ```bash
+  wasm-pack test --headless --firefox
+  ```
+
 ## Features
 
 ### SHA-256 Hashing
