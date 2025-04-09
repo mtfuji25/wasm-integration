@@ -1,0 +1,15 @@
+{
+    "name": "@wasm-integration/web",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "author": "mtfuji25",
+    "license": "MIT",
+    "devDependencies": {
+        "vite": "^6.2.5",
+        "vite-plugin-wasm": "^3.4.1"
+    }
+}

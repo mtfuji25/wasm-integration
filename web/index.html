@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WASM Integration Demo</title>
+</head>
+
+<body>
+    <h1>WASM Integration Demo</h1>
+
+    <input type="text" id="inputText" placeholder="Enter text to hash">
+    <button onclick="hashInput()">Compute SHA-256</button>
+    <p id="hashResult"></p>
+
+    <input type="number" id="primeLimit" placeholder="Enter limit for primes">
+    <button onclick="generatePrimes()">Generate Primes</button>
+    <p id="primesResult"></p>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
